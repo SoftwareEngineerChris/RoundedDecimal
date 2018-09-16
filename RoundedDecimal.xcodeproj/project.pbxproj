@@ -10,6 +10,9 @@
 		8366A478214E9D8B0060C383 /* RoundedDecimal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8366A46E214E9D8B0060C383 /* RoundedDecimal.framework */; };
 		8366A47D214E9D8B0060C383 /* RoundedDecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A47C214E9D8B0060C383 /* RoundedDecimalTests.swift */; };
 		8366A47F214E9D8B0060C383 /* RoundedDecimal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8366A471214E9D8B0060C383 /* RoundedDecimal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8366A489214E9F8E0060C383 /* RoundedDecimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A488214E9F8E0060C383 /* RoundedDecimal.swift */; };
+		8366A48B214EA0330060C383 /* Decimal+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48A214EA0330060C383 /* Decimal+Rounding.swift */; };
+		8366A48D214EA04F0060C383 /* DecimalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48C214EA04F0060C383 /* DecimalTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		8366A477214E9D8B0060C383 /* RoundedDecimalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundedDecimalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8366A47C214E9D8B0060C383 /* RoundedDecimalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedDecimalTests.swift; sourceTree = "<group>"; };
 		8366A47E214E9D8B0060C383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8366A488214E9F8E0060C383 /* RoundedDecimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedDecimal.swift; sourceTree = "<group>"; };
+		8366A48A214EA0330060C383 /* Decimal+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Rounding.swift"; sourceTree = "<group>"; };
+		8366A48C214EA04F0060C383 /* DecimalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,9 @@
 			children = (
 				8366A471214E9D8B0060C383 /* RoundedDecimal.h */,
 				8366A472214E9D8B0060C383 /* Info.plist */,
+				8366A488214E9F8E0060C383 /* RoundedDecimal.swift */,
+				8366A48A214EA0330060C383 /* Decimal+Rounding.swift */,
+				8366A48C214EA04F0060C383 /* DecimalTypes.swift */,
 			);
 			path = RoundedDecimal;
 			sourceTree = "<group>";
@@ -148,6 +157,7 @@
 				TargetAttributes = {
 					8366A46D214E9D8B0060C383 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					8366A476214E9D8B0060C383 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -194,6 +204,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8366A489214E9F8E0060C383 /* RoundedDecimal.swift in Sources */,
+				8366A48B214EA0330060C383 /* Decimal+Rounding.swift in Sources */,
+				8366A48D214EA04F0060C383 /* DecimalTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +352,7 @@
 		8366A483214E9D8B0060C383 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -347,6 +361,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = RoundedDecimal/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -355,6 +370,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.softwareengineering.RoundedDecimal;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -363,6 +379,7 @@
 		8366A484214E9D8B0060C383 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -371,6 +388,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = RoundedDecimal/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -387,6 +405,7 @@
 		8366A486214E9D8B0060C383 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RoundedDecimalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -404,6 +423,7 @@
 		8366A487214E9D8B0060C383 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RoundedDecimalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
