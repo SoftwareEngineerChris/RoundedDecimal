@@ -8,48 +8,9 @@
 
 import Foundation
 
-public struct RoundedDecimal<T: DecimalPlaces>:
-    Codable, ExpressibleByIntegerLiteral, ExpressibleByStringLiteral,
-    CustomStringConvertible, CustomDebugStringConvertible {
-    
-    public typealias IntegerLiteralType = Int
-    public typealias StringLiteralType = String
+public struct RoundedDecimal<T: DecimalPlaces> {
     
     private let underlyingValue: Decimal
-    
-    // MARK: ExpressibleByStringLiteral implementation
-    
-    public init(stringLiteral: String) {
-        
-        let decimalValue = Decimal(string: stringLiteral) ?? .nan
-        
-        self.init(value: decimalValue)
-    }
-    
-    // MARK: ExpressibleByIntegerLiteral implementation
-    
-    public init(integerLiteral value: IntegerLiteralType) {
-        
-        self.init(value: Decimal(value))
-    }
-    
-    // MARK: Decodable implementation
-    
-    public init(from decoder: Decoder) throws {
-        
-        let container = try decoder.singleValueContainer()
-        
-        let stringRepresentation = try container.decode(String.self)
-        
-        self.init(stringLiteral: stringRepresentation)
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        
-        var container = encoder.singleValueContainer()
-        
-        try container.encode(description)
-    }
     
     private init(value: Decimal) {
         
@@ -98,9 +59,7 @@ public struct RoundedDecimal<T: DecimalPlaces>:
         return RoundedDecimal(value: .nan)
     }
     
-    // MARK: CustomStringConvertible, CustomDebugStringConvertible implementation
-
-    private let descriptionFormatter = { () -> NumberFormatter in
+    private let formatter = { () -> NumberFormatter in
         
         let formatter = NumberFormatter()
         
@@ -110,20 +69,60 @@ public struct RoundedDecimal<T: DecimalPlaces>:
         
         return formatter
     }()
+}
+
+extension RoundedDecimal: ExpressibleByStringLiteral {
+    
+    public init(stringLiteral: String) {
+        
+        let decimalValue = Decimal(string: stringLiteral) ?? .nan
+        
+        self.init(value: decimalValue)
+    }
+}
+
+extension RoundedDecimal: ExpressibleByIntegerLiteral {
+    
+    public init(integerLiteral value: IntegerLiteralType) {
+        
+        self.init(value: Decimal(value))
+    }
+}
+
+extension RoundedDecimal: Codable {
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case underlyingValue
+    }
+    
+    public init(from decoder: Decoder) throws {
+        
+        let container = try decoder.singleValueContainer()
+        
+        let stringRepresentation = try container.decode(String.self)
+        
+        self.init(stringLiteral: stringRepresentation)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.singleValueContainer()
+        
+        try container.encode(description)
+    }
+}
+
+extension RoundedDecimal: CustomStringConvertible, CustomDebugStringConvertible {
     
     public var description: String {
         
-        return descriptionFormatter.string(from: underlyingValue as NSDecimalNumber)!
+        return formatter.string(from: underlyingValue as NSDecimalNumber)!
     }
     
     public var debugDescription: String {
         
         return description
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        
-        case underlyingValue
     }
 }
 
