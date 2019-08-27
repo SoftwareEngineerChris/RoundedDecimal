@@ -11,8 +11,8 @@
 		8366A47D214E9D8B0060C383 /* RoundedDecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A47C214E9D8B0060C383 /* RoundedDecimalTests.swift */; };
 		8366A47F214E9D8B0060C383 /* RoundedDecimal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8366A471214E9D8B0060C383 /* RoundedDecimal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8366A489214E9F8E0060C383 /* RoundedDecimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A488214E9F8E0060C383 /* RoundedDecimal.swift */; };
-		8366A48B214EA0330060C383 /* Decimal+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48A214EA0330060C383 /* Decimal+Rounding.swift */; };
-		8366A48D214EA04F0060C383 /* DecimalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48C214EA04F0060C383 /* DecimalTypes.swift */; };
+		8366A48B214EA0330060C383 /* DecimalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48A214EA0330060C383 /* DecimalTypes.swift */; };
+		8366A48D214EA04F0060C383 /* Decimal+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48C214EA04F0060C383 /* Decimal+Rounding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,9 +32,9 @@
 		8366A477214E9D8B0060C383 /* RoundedDecimalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundedDecimalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8366A47C214E9D8B0060C383 /* RoundedDecimalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedDecimalTests.swift; sourceTree = "<group>"; };
 		8366A47E214E9D8B0060C383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8366A488214E9F8E0060C383 /* RoundedDecimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedDecimal.swift; sourceTree = "<group>"; };
-		8366A48A214EA0330060C383 /* Decimal+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Rounding.swift"; sourceTree = "<group>"; };
-		8366A48C214EA04F0060C383 /* DecimalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalTypes.swift; sourceTree = "<group>"; };
+		8366A488214E9F8E0060C383 /* RoundedDecimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoundedDecimal.swift; path = implementation/RoundedDecimal.swift; sourceTree = "<group>"; };
+		8366A48A214EA0330060C383 /* DecimalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DecimalTypes.swift; path = implementation/DecimalTypes.swift; sourceTree = "<group>"; };
+		8366A48C214EA04F0060C383 /* Decimal+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Decimal+Rounding.swift"; path = "implementation/Decimal+Rounding.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +80,8 @@
 				8366A471214E9D8B0060C383 /* RoundedDecimal.h */,
 				8366A472214E9D8B0060C383 /* Info.plist */,
 				8366A488214E9F8E0060C383 /* RoundedDecimal.swift */,
-				8366A48A214EA0330060C383 /* Decimal+Rounding.swift */,
-				8366A48C214EA04F0060C383 /* DecimalTypes.swift */,
+				8366A48A214EA0330060C383 /* DecimalTypes.swift */,
+				8366A48C214EA04F0060C383 /* Decimal+Rounding.swift */,
 			);
 			path = RoundedDecimal;
 			sourceTree = "<group>";
@@ -157,10 +157,11 @@
 				TargetAttributes = {
 					8366A46D214E9D8B0060C383 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1030;
 					};
 					8366A476214E9D8B0060C383 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
@@ -170,6 +171,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 8366A464214E9D8B0060C383;
 			productRefGroup = 8366A46F214E9D8B0060C383 /* Products */;
@@ -205,8 +207,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8366A489214E9F8E0060C383 /* RoundedDecimal.swift in Sources */,
-				8366A48B214EA0330060C383 /* Decimal+Rounding.swift in Sources */,
-				8366A48D214EA04F0060C383 /* DecimalTypes.swift in Sources */,
+				8366A48B214EA0330060C383 /* DecimalTypes.swift in Sources */,
+				8366A48D214EA04F0060C383 /* Decimal+Rounding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +373,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -397,7 +399,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.softwareengineering.RoundedDecimal;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -415,7 +417,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.softwareengineering.RoundedDecimalTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -433,7 +435,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.softwareengineering.RoundedDecimalTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
