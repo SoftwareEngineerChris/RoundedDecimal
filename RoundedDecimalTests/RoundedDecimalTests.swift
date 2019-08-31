@@ -76,6 +76,23 @@ class RoundedDecimalTests: XCTestCase {
         XCTAssertNotEqual(decimalA, decimalB)
     }
     
+    func test_equatable_variousDecimals_returnsTrue() {
+        
+        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        
+        let decimalB: RoundedDecimal<Places.two> = "1.254"
+        
+        let decimalC: RoundedDecimal<Places.two> = "1.2545"
+        
+        let decimalD: RoundedDecimal<Places.two> = "1.250000"
+        
+        XCTAssertEqual(decimalA, decimalB)
+        
+        XCTAssertEqual(decimalA, decimalC)
+        
+        XCTAssertEqual(decimalA, decimalD)
+    }
+    
     // MARK: Comparable
     
     func test_comparable_lessThan_lhsLessThanRhs_returnsTrue() {
@@ -333,5 +350,33 @@ class RoundedDecimalTests: XCTestCase {
         let roundedDecimal: RoundedDecimal<Places.five> = "1.97647802"
         
         XCTAssertEqual(roundedDecimal.debugDescription, "1.97648")
+    }
+    
+    // MARK: Examples
+    
+    func test_dealingWithMultiplePrecisions_decreasingPrecision() {
+        
+        let listedUSDPrice: RoundedDecimal<Places.two> = "2.59"
+        
+        let exchangeRate: RoundedDecimal<Places.five> = "1.12345"
+        
+        let shortExchangeRate: RoundedDecimal<Places.two> = exchangeRate.withInferredPrecision()
+        
+        let localPrice = listedUSDPrice * shortExchangeRate
+        
+        XCTAssertEqual(localPrice, "2.90")
+    }
+    
+    func test_dealingWithMultiplePrecisions_increasingPrecision() {
+        
+        let listedUSDPrice: RoundedDecimal<Places.two> = "2.59"
+        
+        let exchangeRate: RoundedDecimal<Places.five> = "1.12345"
+        
+        let longListedUSDPrice: RoundedDecimal<Places.five> = listedUSDPrice.withInferredPrecision()
+        
+        let localPrice = longListedUSDPrice * exchangeRate
+        
+        XCTAssertEqual(localPrice, "2.90974")
     }
 }
