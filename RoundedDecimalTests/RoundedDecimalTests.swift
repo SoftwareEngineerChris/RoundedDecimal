@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import RoundedDecimal
+import RoundedDecimal_iOS
 
 class RoundedDecimalTests: XCTestCase {
     

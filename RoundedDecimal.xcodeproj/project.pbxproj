@@ -7,12 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8366A478214E9D8B0060C383 /* RoundedDecimal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8366A46E214E9D8B0060C383 /* RoundedDecimal.framework */; };
+		8366A478214E9D8B0060C383 /* RoundedDecimal_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8366A46E214E9D8B0060C383 /* RoundedDecimal_iOS.framework */; };
 		8366A47D214E9D8B0060C383 /* RoundedDecimalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A47C214E9D8B0060C383 /* RoundedDecimalTests.swift */; };
 		8366A47F214E9D8B0060C383 /* RoundedDecimal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8366A471214E9D8B0060C383 /* RoundedDecimal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8366A489214E9F8E0060C383 /* RoundedDecimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A488214E9F8E0060C383 /* RoundedDecimal.swift */; };
 		8366A48B214EA0330060C383 /* DecimalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48A214EA0330060C383 /* DecimalTypes.swift */; };
 		8366A48D214EA04F0060C383 /* Decimal+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48C214EA04F0060C383 /* Decimal+Rounding.swift */; };
+		F61B00B5231AFC8F003DF5EE /* RoundedDecimal_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = F61B00B3231AFC8F003DF5EE /* RoundedDecimal_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F61B00C2231AFCB5003DF5EE /* RoundedDecimal_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = F61B00C0231AFCB5003DF5EE /* RoundedDecimal_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F61B00CF231AFCCB003DF5EE /* RoundedDecimal_watchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = F61B00CD231AFCCB003DF5EE /* RoundedDecimal_watchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F61B00D3231AFE17003DF5EE /* RoundedDecimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A488214E9F8E0060C383 /* RoundedDecimal.swift */; };
+		F61B00D4231AFE17003DF5EE /* DecimalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48A214EA0330060C383 /* DecimalTypes.swift */; };
+		F61B00D5231AFE17003DF5EE /* Decimal+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48C214EA04F0060C383 /* Decimal+Rounding.swift */; };
+		F61B00D6231AFE18003DF5EE /* RoundedDecimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A488214E9F8E0060C383 /* RoundedDecimal.swift */; };
+		F61B00D7231AFE18003DF5EE /* DecimalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48A214EA0330060C383 /* DecimalTypes.swift */; };
+		F61B00D8231AFE18003DF5EE /* Decimal+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48C214EA04F0060C383 /* Decimal+Rounding.swift */; };
+		F61B00D9231AFE19003DF5EE /* RoundedDecimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A488214E9F8E0060C383 /* RoundedDecimal.swift */; };
+		F61B00DA231AFE19003DF5EE /* DecimalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48A214EA0330060C383 /* DecimalTypes.swift */; };
+		F61B00DB231AFE19003DF5EE /* Decimal+Rounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8366A48C214EA04F0060C383 /* Decimal+Rounding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,7 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8366A46E214E9D8B0060C383 /* RoundedDecimal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RoundedDecimal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8366A46E214E9D8B0060C383 /* RoundedDecimal_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RoundedDecimal_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8366A471214E9D8B0060C383 /* RoundedDecimal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoundedDecimal.h; sourceTree = "<group>"; };
 		8366A472214E9D8B0060C383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8366A477214E9D8B0060C383 /* RoundedDecimalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundedDecimalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +47,15 @@
 		8366A488214E9F8E0060C383 /* RoundedDecimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoundedDecimal.swift; path = implementation/RoundedDecimal.swift; sourceTree = "<group>"; };
 		8366A48A214EA0330060C383 /* DecimalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DecimalTypes.swift; path = implementation/DecimalTypes.swift; sourceTree = "<group>"; };
 		8366A48C214EA04F0060C383 /* Decimal+Rounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Decimal+Rounding.swift"; path = "implementation/Decimal+Rounding.swift"; sourceTree = "<group>"; };
+		F61B00B1231AFC8F003DF5EE /* RoundedDecimal_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RoundedDecimal_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F61B00B3231AFC8F003DF5EE /* RoundedDecimal_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoundedDecimal_tvOS.h; sourceTree = "<group>"; };
+		F61B00B4231AFC8F003DF5EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F61B00BE231AFCB4003DF5EE /* RoundedDecimal_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RoundedDecimal_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F61B00C0231AFCB5003DF5EE /* RoundedDecimal_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoundedDecimal_macOS.h; sourceTree = "<group>"; };
+		F61B00C1231AFCB5003DF5EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F61B00CB231AFCCA003DF5EE /* RoundedDecimal_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RoundedDecimal_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F61B00CD231AFCCB003DF5EE /* RoundedDecimal_watchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoundedDecimal_watchOS.h; sourceTree = "<group>"; };
+		F61B00CE231AFCCB003DF5EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +70,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8366A478214E9D8B0060C383 /* RoundedDecimal.framework in Frameworks */,
+				8366A478214E9D8B0060C383 /* RoundedDecimal_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F61B00AE231AFC8F003DF5EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F61B00BB231AFCB4003DF5EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F61B00C8231AFCCA003DF5EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +103,9 @@
 			children = (
 				8366A470214E9D8B0060C383 /* RoundedDecimal */,
 				8366A47B214E9D8B0060C383 /* RoundedDecimalTests */,
+				F61B00B2231AFC8F003DF5EE /* RoundedDecimal_tvOS */,
+				F61B00BF231AFCB5003DF5EE /* RoundedDecimal_macOS */,
+				F61B00CC231AFCCB003DF5EE /* RoundedDecimal_watchOS */,
 				8366A46F214E9D8B0060C383 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,8 +113,11 @@
 		8366A46F214E9D8B0060C383 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8366A46E214E9D8B0060C383 /* RoundedDecimal.framework */,
+				8366A46E214E9D8B0060C383 /* RoundedDecimal_iOS.framework */,
 				8366A477214E9D8B0060C383 /* RoundedDecimalTests.xctest */,
+				F61B00B1231AFC8F003DF5EE /* RoundedDecimal_tvOS.framework */,
+				F61B00BE231AFCB4003DF5EE /* RoundedDecimal_macOS.framework */,
+				F61B00CB231AFCCA003DF5EE /* RoundedDecimal_watchOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +143,33 @@
 			path = RoundedDecimalTests;
 			sourceTree = "<group>";
 		};
+		F61B00B2231AFC8F003DF5EE /* RoundedDecimal_tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				F61B00B3231AFC8F003DF5EE /* RoundedDecimal_tvOS.h */,
+				F61B00B4231AFC8F003DF5EE /* Info.plist */,
+			);
+			path = RoundedDecimal_tvOS;
+			sourceTree = "<group>";
+		};
+		F61B00BF231AFCB5003DF5EE /* RoundedDecimal_macOS */ = {
+			isa = PBXGroup;
+			children = (
+				F61B00C0231AFCB5003DF5EE /* RoundedDecimal_macOS.h */,
+				F61B00C1231AFCB5003DF5EE /* Info.plist */,
+			);
+			path = RoundedDecimal_macOS;
+			sourceTree = "<group>";
+		};
+		F61B00CC231AFCCB003DF5EE /* RoundedDecimal_watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				F61B00CD231AFCCB003DF5EE /* RoundedDecimal_watchOS.h */,
+				F61B00CE231AFCCB003DF5EE /* Info.plist */,
+			);
+			path = RoundedDecimal_watchOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -106,12 +181,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F61B00AC231AFC8F003DF5EE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F61B00B5231AFC8F003DF5EE /* RoundedDecimal_tvOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F61B00B9231AFCB4003DF5EE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F61B00C2231AFCB5003DF5EE /* RoundedDecimal_macOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F61B00C6231AFCCA003DF5EE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F61B00CF231AFCCB003DF5EE /* RoundedDecimal_watchOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8366A46D214E9D8B0060C383 /* RoundedDecimal */ = {
+		8366A46D214E9D8B0060C383 /* RoundedDecimal_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8366A482214E9D8B0060C383 /* Build configuration list for PBXNativeTarget "RoundedDecimal" */;
+			buildConfigurationList = 8366A482214E9D8B0060C383 /* Build configuration list for PBXNativeTarget "RoundedDecimal_iOS" */;
 			buildPhases = (
 				8366A469214E9D8B0060C383 /* Sources */,
 				8366A46A214E9D8B0060C383 /* Frameworks */,
@@ -122,9 +221,9 @@
 			);
 			dependencies = (
 			);
-			name = RoundedDecimal;
+			name = RoundedDecimal_iOS;
 			productName = RoundedDecimal;
-			productReference = 8366A46E214E9D8B0060C383 /* RoundedDecimal.framework */;
+			productReference = 8366A46E214E9D8B0060C383 /* RoundedDecimal_iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8366A476214E9D8B0060C383 /* RoundedDecimalTests */ = {
@@ -145,6 +244,60 @@
 			productReference = 8366A477214E9D8B0060C383 /* RoundedDecimalTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		F61B00B0231AFC8F003DF5EE /* RoundedDecimal_tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F61B00B8231AFC8F003DF5EE /* Build configuration list for PBXNativeTarget "RoundedDecimal_tvOS" */;
+			buildPhases = (
+				F61B00AC231AFC8F003DF5EE /* Headers */,
+				F61B00AD231AFC8F003DF5EE /* Sources */,
+				F61B00AE231AFC8F003DF5EE /* Frameworks */,
+				F61B00AF231AFC8F003DF5EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoundedDecimal_tvOS;
+			productName = RoundedDecimal_tvOS;
+			productReference = F61B00B1231AFC8F003DF5EE /* RoundedDecimal_tvOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F61B00BD231AFCB4003DF5EE /* RoundedDecimal_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F61B00C3231AFCB5003DF5EE /* Build configuration list for PBXNativeTarget "RoundedDecimal_macOS" */;
+			buildPhases = (
+				F61B00B9231AFCB4003DF5EE /* Headers */,
+				F61B00BA231AFCB4003DF5EE /* Sources */,
+				F61B00BB231AFCB4003DF5EE /* Frameworks */,
+				F61B00BC231AFCB4003DF5EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoundedDecimal_macOS;
+			productName = RoundedDecimal_macOS;
+			productReference = F61B00BE231AFCB4003DF5EE /* RoundedDecimal_macOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F61B00CA231AFCCA003DF5EE /* RoundedDecimal_watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F61B00D0231AFCCB003DF5EE /* Build configuration list for PBXNativeTarget "RoundedDecimal_watchOS" */;
+			buildPhases = (
+				F61B00C6231AFCCA003DF5EE /* Headers */,
+				F61B00C7231AFCCA003DF5EE /* Sources */,
+				F61B00C8231AFCCA003DF5EE /* Frameworks */,
+				F61B00C9231AFCCA003DF5EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoundedDecimal_watchOS;
+			productName = RoundedDecimal_watchOS;
+			productReference = F61B00CB231AFCCA003DF5EE /* RoundedDecimal_watchOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -163,6 +316,15 @@
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1030;
 					};
+					F61B00B0231AFC8F003DF5EE = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					F61B00BD231AFCB4003DF5EE = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					F61B00CA231AFCCA003DF5EE = {
+						CreatedOnToolsVersion = 10.3;
+					};
 				};
 			};
 			buildConfigurationList = 8366A468214E9D8B0060C383 /* Build configuration list for PBXProject "RoundedDecimal" */;
@@ -178,7 +340,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8366A46D214E9D8B0060C383 /* RoundedDecimal */,
+				8366A46D214E9D8B0060C383 /* RoundedDecimal_iOS */,
+				F61B00B0231AFC8F003DF5EE /* RoundedDecimal_tvOS */,
+				F61B00BD231AFCB4003DF5EE /* RoundedDecimal_macOS */,
+				F61B00CA231AFCCA003DF5EE /* RoundedDecimal_watchOS */,
 				8366A476214E9D8B0060C383 /* RoundedDecimalTests */,
 			);
 		};
@@ -193,6 +358,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8366A475214E9D8B0060C383 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F61B00AF231AFC8F003DF5EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F61B00BC231AFCB4003DF5EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F61B00C9231AFCCA003DF5EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -220,12 +406,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F61B00AD231AFC8F003DF5EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F61B00D5231AFE17003DF5EE /* Decimal+Rounding.swift in Sources */,
+				F61B00D3231AFE17003DF5EE /* RoundedDecimal.swift in Sources */,
+				F61B00D4231AFE17003DF5EE /* DecimalTypes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F61B00BA231AFCB4003DF5EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F61B00D8231AFE18003DF5EE /* Decimal+Rounding.swift in Sources */,
+				F61B00D6231AFE18003DF5EE /* RoundedDecimal.swift in Sources */,
+				F61B00D7231AFE18003DF5EE /* DecimalTypes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F61B00C7231AFCCA003DF5EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F61B00DB231AFE19003DF5EE /* Decimal+Rounding.swift in Sources */,
+				F61B00D9231AFE19003DF5EE /* RoundedDecimal.swift in Sources */,
+				F61B00DA231AFE19003DF5EE /* DecimalTypes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		8366A47A214E9D8B0060C383 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8366A46D214E9D8B0060C383 /* RoundedDecimal */;
+			target = 8366A46D214E9D8B0060C383 /* RoundedDecimal_iOS */;
 			targetProxy = 8366A479214E9D8B0060C383 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -370,8 +586,8 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.softwareengineering.RoundedDecimal;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -397,8 +613,8 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.softwareengineering.RoundedDecimal;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -440,6 +656,173 @@
 			};
 			name = Release;
 		};
+		F61B00B6231AFC8F003DF5EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RoundedDecimal_tvOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.softwareengineering.RoundedDecimal-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10;
+			};
+			name = Debug;
+		};
+		F61B00B7231AFC8F003DF5EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RoundedDecimal_tvOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.softwareengineering.RoundedDecimal-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10;
+			};
+			name = Release;
+		};
+		F61B00C4231AFCB5003DF5EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = RoundedDecimal_macOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.softwareengineering.RoundedDecimal-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F61B00C5231AFCB5003DF5EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = RoundedDecimal_macOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.softwareengineering.RoundedDecimal-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F61B00D1231AFCCB003DF5EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RoundedDecimal_watchOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.softwareengineering.RoundedDecimal-watchOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		F61B00D2231AFCCB003DF5EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RoundedDecimal_watchOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.softwareengineering.RoundedDecimal-watchOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -452,7 +835,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8366A482214E9D8B0060C383 /* Build configuration list for PBXNativeTarget "RoundedDecimal" */ = {
+		8366A482214E9D8B0060C383 /* Build configuration list for PBXNativeTarget "RoundedDecimal_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8366A483214E9D8B0060C383 /* Debug */,
@@ -466,6 +849,33 @@
 			buildConfigurations = (
 				8366A486214E9D8B0060C383 /* Debug */,
 				8366A487214E9D8B0060C383 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F61B00B8231AFC8F003DF5EE /* Build configuration list for PBXNativeTarget "RoundedDecimal_tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F61B00B6231AFC8F003DF5EE /* Debug */,
+				F61B00B7231AFC8F003DF5EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F61B00C3231AFCB5003DF5EE /* Build configuration list for PBXNativeTarget "RoundedDecimal_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F61B00C4231AFCB5003DF5EE /* Debug */,
+				F61B00C5231AFCB5003DF5EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F61B00D0231AFCCB003DF5EE /* Build configuration list for PBXNativeTarget "RoundedDecimal_watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F61B00D1231AFCCB003DF5EE /* Debug */,
+				F61B00D2231AFCCB003DF5EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

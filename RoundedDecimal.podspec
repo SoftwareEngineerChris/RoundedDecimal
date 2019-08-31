@@ -15,6 +15,9 @@ decimals of differenct decimal places can be done safely and explicitly using th
   s.source           = { :git => 'https://github.com/SoftwareEngineerChris/RoundedDecimal.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '10.0'
+  s.osx.deployment_target = '10.9'
+  s.watchos.deployment_target = '3.0'
+  s.tvos.deployment_target = '10'
   s.swift_version = '5.0'
 
   s.source_files = 'RoundedDecimal/implementation/**/*'

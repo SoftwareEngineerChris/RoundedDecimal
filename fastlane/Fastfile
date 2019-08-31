@@ -17,6 +17,6 @@ default_platform(:ios)
 
 platform :ios do
   lane :test do
-      run_tests(scheme: "RoundedDecimal")
+      run_tests(scheme: "RoundedDecimal_buildAll")
   end
 end
