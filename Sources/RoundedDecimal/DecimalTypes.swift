@@ -44,4 +44,24 @@ public struct Places {
         
         public static let count: Int16 = 5
     }
+    
+    public struct six: DecimalPlaces {
+        
+        public static let count: Int16 = 6
+    }
+    
+    public struct seven: DecimalPlaces {
+        
+        public static let count: Int16 = 7
+    }
+    
+    public struct eight: DecimalPlaces {
+        
+        public static let count: Int16 = 8
+    }
+    
+    public struct nine: DecimalPlaces {
+        
+        public static let count: Int16 = 9
+    }
 }

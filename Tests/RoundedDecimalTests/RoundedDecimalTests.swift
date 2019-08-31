@@ -1,17 +1,7 @@
-//
-//  RoundedDecimalTests.swift
-//  RoundedDecimalTests
-//
-//  Created by Chris Hargreaves on 16/09/2018.
-//  Copyright © 2018 Software Engineering Limited. All rights reserved.
-//
-
 import XCTest
-import RoundedDecimal_iOS
+@testable import RoundedDecimal
 
-class RoundedDecimalTests: XCTestCase {
-    
-    // MARK: Initialisation
+final class RoundedDecimalTests: XCTestCase {
     
     func test_initWithString_validDecimalString_returnsRoundedDecimal() {
         
@@ -379,4 +369,40 @@ class RoundedDecimalTests: XCTestCase {
         
         XCTAssertEqual(localPrice, "2.90974")
     }
+    
+    static var allTests = [
+        ("test_initWithString_validDecimalString_returnsRoundedDecimal", test_initWithString_validDecimalString_returnsRoundedDecimal),
+        ("test_initWithString_invalidDecimalString_returnsNil", test_initWithString_invalidDecimalString_returnsNil),
+        ("test_initWithIntegerLiteral_returnsRoundedDecimal", test_initWithIntegerLiteral_returnsRoundedDecimal),
+        ("test_equatable_isEqual_returnsTrue", test_equatable_isEqual_returnsTrue),
+        ("test_equatable_isNotEqual_returnsFalse", test_equatable_isNotEqual_returnsFalse),
+        ("test_equatable_roundsToSameValue_returnsTrue", test_equatable_roundsToSameValue_returnsTrue),
+        ("test_equatable_roundsToDifferentValue_returnsFalse", test_equatable_roundsToDifferentValue_returnsFalse),
+        ("test_equatable_variousDecimals_returnsTrue", test_equatable_variousDecimals_returnsTrue),
+        ("test_comparable_lessThan_lhsLessThanRhs_returnsTrue", test_comparable_lessThan_lhsLessThanRhs_returnsTrue),
+        ("test_comparable_lessThan_lhsGreaterThanRhs_returnsFalse", test_comparable_lessThan_lhsGreaterThanRhs_returnsFalse),
+        ("test_comparable_greaterThan_lhsLessThanRhs_returnsFalse", test_comparable_greaterThan_lhsLessThanRhs_returnsFalse),
+        ("test_comparable_greaterThan_lhsGreaterThanRhs_returnsTrue", test_comparable_greaterThan_lhsGreaterThanRhs_returnsTrue),
+        ("test_addition_addsCorrectly", test_addition_addsCorrectly),
+        ("test_subtraction_subtractsCorrectly", test_subtraction_subtractsCorrectly),
+        ("test_division_dividesCorrectly", test_division_dividesCorrectly),
+        ("test_division_fromZero_dividesCorrectly_zero", test_division_fromZero_dividesCorrectly_zero),
+        ("test_division_byZero_isNaN", test_division_byZero_isNaN),
+        ("test_multiplication_multipliesCorrectly", test_multiplication_multipliesCorrectly),
+        ("test_multiplication_byZero_multipliesCorrectly_zero", test_multiplication_byZero_multipliesCorrectly_zero),
+        ("test_precidence_bodmas1", test_precidence_bodmas1),
+        ("test_precidence_bodmas2", test_precidence_bodmas2),
+        ("test_withInferredPrecision_smallerToLargerNumberOfPlaces_retainsAccuracyAndPrecision", test_withInferredPrecision_smallerToLargerNumberOfPlaces_retainsAccuracyAndPrecision),
+        ("test_withInferredPrecision_largerToSmallerNumberOfPlaces_losesPrecisionRatainsAccuracy", test_withInferredPrecision_largerToSmallerNumberOfPlaces_losesPrecisionRatainsAccuracy),
+        ("test_isNaN_validNumber_returnsFalse", test_isNaN_validNumber_returnsFalse),
+        ("test_isNaN_invalidNumber_returnsTrue", test_isNaN_invalidNumber_returnsTrue),
+        ("test_codable_toAndFromSameType_equates", test_codable_toAndFromSameType_equates),
+        ("test_codable_toLesserDecimalType_usesLesserTypeForRounding", test_codable_toLesserDecimalType_usesLesserTypeForRounding),
+        ("test_codable_toGreaterDecimalType_retainsAccuracy", test_codable_toGreaterDecimalType_retainsAccuracy),
+        ("test_encodable_representedAsRootLevelString", test_encodable_representedAsRootLevelString),
+        ("test_description_returnsCorrectValue", test_description_returnsCorrectValue),
+        ("test_debugDescription_returnsCorrectValue", test_debugDescription_returnsCorrectValue),
+        ("test_dealingWithMultiplePrecisions_decreasingPrecision", test_dealingWithMultiplePrecisions_decreasingPrecision),
+        ("test_dealingWithMultiplePrecisions_increasingPrecision", test_dealingWithMultiplePrecisions_increasingPrecision),
+    ]
 }

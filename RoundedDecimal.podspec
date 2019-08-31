@@ -20,5 +20,5 @@ decimals of differenct decimal places can be done safely and explicitly using th
   s.tvos.deployment_target = '10'
   s.swift_version = '5.0'
 
-  s.source_files = 'RoundedDecimal/implementation/**/*'
+  s.source_files = 'Sources/**/*'
 end
