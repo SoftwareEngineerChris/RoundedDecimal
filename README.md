@@ -23,3 +23,61 @@ What they should have seen on their receipt is either:
 `Special Product @ £3.08 x 300 = £924.00` or  `Special Product @ £3.0771 x 300 = £923.13`
 
 Of course, how this is handled should be a business decision 📈, but we should be able to guarantee the decision in our code. If we can leverage the type system to help us out, we can make this a compile-time requirement. `RoundedDecimal` can help us with that.
+
+## Example usage
+
+The way that `RoundedDecimal` works is that it forces you to think about how you would like to deal with handling numbers of varying decimal places. For example, dealing with an item price that has 2 decimal places, and an exchange rate that has 5 decimal places. Using a regular decimal you can simply do: `let localPrice: Decimal = itemPrice * exchangeRate` which may look like `2.59 * 1.12345` resulting in the value `2.9097355`. This number may go off to other parts of the system as described in the `Why` section above.
+
+Using `RoundedDecimal`, the code has to be more explicit. For example, this code would **fail** to compile as we're trying to multiply two numbers of different precision:
+
+```swift
+let listedUSDPrice: RoundedDecimal<Places.two> = "2.59"
+let exchangeRate: RoundedDecimal<Places.five> = "1.12345"
+        
+let localPrice = listedUSDPrice * exchangeRate
+```
+
+The compilation failure look like:
+
+```bash
+binary operator '*' cannot be applied to operands of type 'RoundedDecimal<Places.two>' and 'RoundedDecimal<Places.five>'
+        let localPrice = listedUSDPrice * exchangeRate
+                         ~~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~    
+```
+
+Instead, a decision would need to be made. Either we reduce the precision of the exchange rate to two decimal places to match that of the listed price:
+
+```swift
+let listedUSDPrice: RoundedDecimal<Places.two> = "2.59"
+let exchangeRate: RoundedDecimal<Places.five> = "1.12345"
+
+let shortExchangeRate: RoundedDecimal<Places.two> = exchangeRate.withInferredPrecision()
+let localPrice = listedUSDPrice * shortExchangeRate // localPrice would result in 2.90
+
+```
+
+Or, we increase the precision of the listed price to five decimal places so that we can keep the precision of the exchange rate in our calculation:
+
+```swift
+
+let listedUSDPrice: RoundedDecimal<Places.two> = "2.59"
+let exchangeRate: RoundedDecimal<Places.five> = "1.12345"
+
+let longListedUSDPrice: RoundedDecimal<Places.five> = listedUSDPrice.withInferredPrecision()
+let localPrice = longListedUSDPrice * exchangeRate // localPrice would result in 2.90974
+```
+
+Notice that each approach is explicit and results in different values. Its also worth noting that increasing the precision of the listed price doesn't actually change its value, it'll still be 2.59 but it allows it to be treated as a number with five decimal places, making it explicitly 2.59000.
+
+### Converting precisions
+
+As with the example shown above, when dealing with numbers of different precisions in an operation, we need to be explicit. To do this we use the Swift type system, generics and inference.
+
+To explicitly change the precision of a number we must use `withInferredPrecision()` where the expression result is explicitly typed.
+
+For example to convert a number with five decimal places to one which has two decimal places:
+
+```swift
+let exchangeRate: RoundedDecimal<Places.five> = "1.12345"
+let shortExchangeRate: RoundedDecimal<Places.two> = exchangeRate.withInferredPrecision() // shortExchangeRate would result in 1.12
+```
