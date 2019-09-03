@@ -34,6 +34,11 @@ public struct RoundedDecimal<T: DecimalPlaces> {
         return RoundedDecimal<NewDecimalPlaces>(value: underlyingValue)
     }
     
+    public func format(with numberFormatter: NumberFormatter) -> String {
+        
+        return numberFormatter.string(from: underlyingValue as NSNumber)!
+    }
+    
     public static func / (rhs: RoundedDecimal, lhs: RoundedDecimal) -> RoundedDecimal {
         
         return RoundedDecimal(value: rhs.underlyingValue / lhs.underlyingValue)

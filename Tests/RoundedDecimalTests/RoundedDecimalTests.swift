@@ -260,6 +260,21 @@ final class RoundedDecimalTests: XCTestCase {
         XCTAssertEqual(decimalB.description, "1.26")
     }
     
+    // MARK: format(with:)
+    
+    func test_formatWith_formatsCorrectly() {
+        
+        let decimalA: RoundedDecimal<Places.five> = "1.259456363"
+        
+        let numberFormatter = NumberFormatter()
+        
+        numberFormatter.numberStyle = .spellOut
+        
+        let result = decimalA.format(with: numberFormatter)
+        
+        XCTAssertEqual(result, "one point two five nine four six")
+    }
+    
     // MARK: isNaN
     
     func test_isNaN_validNumber_returnsFalse() {
@@ -342,6 +357,13 @@ final class RoundedDecimalTests: XCTestCase {
         XCTAssertEqual(roundedDecimal.debugDescription, "1.97648")
     }
     
+    func test_debugDescription_NaN_returnsCorrectValue() {
+        
+        let roundedDecimal: RoundedDecimal<Places.five> = .nan()
+        
+        XCTAssertEqual(roundedDecimal.debugDescription, "NaN")
+    }
+    
     // MARK: Examples
     
     func test_dealingWithMultiplePrecisions_decreasingPrecision() {
@@ -394,6 +416,7 @@ final class RoundedDecimalTests: XCTestCase {
         ("test_precidence_bodmas2", test_precidence_bodmas2),
         ("test_withInferredPrecision_smallerToLargerNumberOfPlaces_retainsAccuracyAndPrecision", test_withInferredPrecision_smallerToLargerNumberOfPlaces_retainsAccuracyAndPrecision),
         ("test_withInferredPrecision_largerToSmallerNumberOfPlaces_losesPrecisionRatainsAccuracy", test_withInferredPrecision_largerToSmallerNumberOfPlaces_losesPrecisionRatainsAccuracy),
+        ("test_formatWith_formatsCorrectly", test_formatWith_formatsCorrectly),
         ("test_isNaN_validNumber_returnsFalse", test_isNaN_validNumber_returnsFalse),
         ("test_isNaN_invalidNumber_returnsTrue", test_isNaN_invalidNumber_returnsTrue),
         ("test_codable_toAndFromSameType_equates", test_codable_toAndFromSameType_equates),
@@ -402,6 +425,7 @@ final class RoundedDecimalTests: XCTestCase {
         ("test_encodable_representedAsRootLevelString", test_encodable_representedAsRootLevelString),
         ("test_description_returnsCorrectValue", test_description_returnsCorrectValue),
         ("test_debugDescription_returnsCorrectValue", test_debugDescription_returnsCorrectValue),
+        ("test_debugDescription_NaN_returnsCorrectValue", test_debugDescription_NaN_returnsCorrectValue),
         ("test_dealingWithMultiplePrecisions_decreasingPrecision", test_dealingWithMultiplePrecisions_decreasingPrecision),
         ("test_dealingWithMultiplePrecisions_increasingPrecision", test_dealingWithMultiplePrecisions_increasingPrecision),
     ]
