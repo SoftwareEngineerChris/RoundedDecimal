@@ -10,9 +10,11 @@ import Foundation
 
 public struct RoundedDecimal<T: DecimalPlaces> {
     
-    private let underlyingValue: Decimal
+    typealias Places = T
     
-    private init(value: Decimal) {
+    let value: Decimal
+    
+    init(value: Decimal) {
         
         let decimalHandler = NSDecimalNumberHandler(roundingMode: .bankers,
                                                     scale: T.count,
@@ -21,42 +23,42 @@ public struct RoundedDecimal<T: DecimalPlaces> {
                                                     raiseOnUnderflow: false,
                                                     raiseOnDivideByZero: false)
         
-        self.underlyingValue = value.rounding(accordingToBehavior: decimalHandler)
+        self.value = value.rounding(accordingToBehavior: decimalHandler)
     }
     
     public var isNaN: Bool {
         
-        return underlyingValue.isNaN
+        return value.isNaN
     }
     
     public func withInferredPrecision<NewDecimalPlaces: DecimalPlaces>() -> RoundedDecimal<NewDecimalPlaces> {
         
-        return RoundedDecimal<NewDecimalPlaces>(value: underlyingValue)
+        return RoundedDecimal<NewDecimalPlaces>(value: value)
     }
     
     public func format(with numberFormatter: NumberFormatter) -> String {
         
-        return numberFormatter.string(from: underlyingValue as NSNumber)!
+        return numberFormatter.string(from: value as NSNumber)!
     }
     
-    public static func / (rhs: RoundedDecimal, lhs: RoundedDecimal) -> RoundedDecimal {
+    public static func / (lhs: RoundedDecimal, rhs: RoundedDecimal) -> RoundedDecimal {
         
-        return RoundedDecimal(value: rhs.underlyingValue / lhs.underlyingValue)
+        return RoundedDecimal(value: lhs.value / rhs.value)
     }
     
-    public static func * (rhs: RoundedDecimal, lhs: RoundedDecimal) -> RoundedDecimal {
+    public static func * (lhs: RoundedDecimal, rhs: RoundedDecimal) -> RoundedDecimal {
         
-        return RoundedDecimal(value: rhs.underlyingValue * lhs.underlyingValue)
+        return RoundedDecimal(value: lhs.value * rhs.value)
     }
     
-    public static func + (rhs: RoundedDecimal, lhs: RoundedDecimal) -> RoundedDecimal {
+    public static func + (lhs: RoundedDecimal, rhs: RoundedDecimal) -> RoundedDecimal {
         
-        return RoundedDecimal(value: rhs.underlyingValue + lhs.underlyingValue)
+        return RoundedDecimal(value: lhs.value + rhs.value)
     }
     
-    public static func - (rhs: RoundedDecimal, lhs: RoundedDecimal) -> RoundedDecimal {
+    public static func - (lhs: RoundedDecimal, rhs: RoundedDecimal) -> RoundedDecimal {
         
-        return RoundedDecimal(value: rhs.underlyingValue - lhs.underlyingValue)
+        return RoundedDecimal(value: lhs.value - rhs.value)
     }
     
     public static func nan() -> RoundedDecimal {
@@ -98,7 +100,7 @@ extension RoundedDecimal: Codable {
     
     enum CodingKeys: String, CodingKey {
         
-        case underlyingValue
+        case value
     }
     
     public init(from decoder: Decoder) throws {
@@ -122,7 +124,7 @@ extension RoundedDecimal: CustomStringConvertible, CustomDebugStringConvertible 
     
     public var description: String {
         
-        return formatter.string(from: underlyingValue as NSDecimalNumber)!
+        return formatter.string(from: value as NSDecimalNumber)!
     }
     
     public var debugDescription: String {
@@ -133,13 +135,13 @@ extension RoundedDecimal: CustomStringConvertible, CustomDebugStringConvertible 
 
 extension RoundedDecimal: Equatable, Comparable {
     
-    public static func == (rhs: RoundedDecimal, lhs: RoundedDecimal) -> Bool {
-
-        return rhs.underlyingValue == lhs.underlyingValue
+    public static func == (lhs: RoundedDecimal, rhs: RoundedDecimal) -> Bool {
+        
+        return lhs.value == rhs.value
     }
     
-    public static func < (rhs: RoundedDecimal, lhs: RoundedDecimal) -> Bool {
+    public static func < (lhs: RoundedDecimal, rhs: RoundedDecimal) -> Bool {
         
-        return rhs.underlyingValue < lhs.underlyingValue
+        return lhs.value < rhs.value
     }
 }

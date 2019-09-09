@@ -1,5 +1,5 @@
 //
-//  RoundedDecimal.swift
+//  DynamicRoundedDecimalTests.swift
 //  RoundedDecimal
 //
 //  Created by Chris Hargreaves on 16/09/2018.
@@ -9,11 +9,13 @@
 import XCTest
 @testable import RoundedDecimal
 
-final class RoundedDecimalTests: XCTestCase {
+final class DynamicRoundedDecimalTests: XCTestCase {
     
-    func test_initWithString_validDecimalString_returnsRoundedDecimal() {
+    // MARK: Initialisers
+    
+    func test_initWithString_validDecimalString_returnsDynamicRoundedDecimal() {
         
-        let decimal: RoundedDecimal<Places.two> = "1.25"
+        let decimal = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
         XCTAssertEqual(decimal.description, "1.25")
         
@@ -22,109 +24,157 @@ final class RoundedDecimalTests: XCTestCase {
     
     func test_initWithString_invalidDecimalString_returnsNil() {
         
-        let decimal: RoundedDecimal<Places.two> = "a1.25"
+        let decimal = DynamicRoundedDecimal(stringLiteral: "a1.25", scale: 2)
         
         XCTAssertTrue(decimal.isNaN)
     }
     
-    func test_initWithIntegerLiteral_returnsRoundedDecimal() {
+    func test_initWithIntegerLiteral_returnsDynamicRoundedDecimal() {
         
-        let decimal: RoundedDecimal<Places.two> = 163
+        let decimal: DynamicRoundedDecimal = 163
         
         XCTAssertNotNil(decimal)
         
-        XCTAssertEqual(decimal, "163.00")
+        XCTAssertEqual(decimal.description, "163")
+    }
+    
+    func test_initWithRoundedDecimal_returnsDynamicRoundedDecimal() {
+        
+        let roundedDecimal = RoundedDecimal<Places.four>(value: 1.284726)
+        
+        let decimal = DynamicRoundedDecimal(roundedDecimal: roundedDecimal, scale: 2)
+        
+        XCTAssertEqual(decimal.description, "1.28")
+    }
+    
+    func test_initWithDynmicRoundedDecimal_returnsDynamicRoundedDecimal() {
+        
+        let dynamicRoundedDecimal = DynamicRoundedDecimal(stringLiteral: "1.274228", scale: 3)
+        
+        XCTAssertEqual(dynamicRoundedDecimal.description, "1.274")
+        
+        let decimal = DynamicRoundedDecimal(roundedDecimal: dynamicRoundedDecimal, scale: 2)
+        
+        XCTAssertEqual(decimal.description, "1.27")
+    }
+    
+    // MARK: with(scale:)
+    
+    func test_withScale_toLesserScale_returnsDynamicRoundedDecimalWithNewScale() {
+        
+        let dynamicRoundedDecimal = DynamicRoundedDecimal(stringLiteral: "1.274228", scale: 4)
+        
+        let result = dynamicRoundedDecimal.with(scale: 2)
+        
+        XCTAssertEqual(result.description, "1.27")
+    }
+    
+    func test_withScale_toGreaterScale_returnsDynamicRoundedDecimalWithNewScale() {
+        
+        let dynamicRoundedDecimal = DynamicRoundedDecimal(stringLiteral: "1.2742", scale: 4)
+        
+        let result = dynamicRoundedDecimal.with(scale: 6)
+        
+        XCTAssertEqual(result.description, "1.274200")
     }
     
     // MARK: Equatable
     
     func test_equatable_isEqual_returnsTrue() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "1.25"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
         XCTAssertEqual(decimalA, decimalB)
     }
     
     func test_equatable_isNotEqual_returnsFalse() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "1.26"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "1.26", scale: 2)
         
         XCTAssertNotEqual(decimalA, decimalB)
     }
     
     func test_equatable_roundsToSameValue_returnsTrue() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "1.251"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "1.251", scale: 2)
         
         XCTAssertEqual(decimalA, decimalB)
     }
     
     func test_equatable_roundsToDifferentValue_returnsFalse() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "1.259"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "1.259", scale: 2)
         
         XCTAssertNotEqual(decimalA, decimalB)
     }
     
     func test_equatable_variousDecimals_returnsTrue() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 5)
         
-        let decimalB: RoundedDecimal<Places.two> = "1.254"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "1.254", scale: 2)
         
-        let decimalC: RoundedDecimal<Places.two> = "1.2545"
+        let decimalC = DynamicRoundedDecimal(stringLiteral: "1.2545", scale: 2)
         
-        let decimalD: RoundedDecimal<Places.two> = "1.250000"
+        let decimalD = DynamicRoundedDecimal(stringLiteral: "1.250000", scale: 10)
         
         XCTAssertEqual(decimalA, decimalB)
         
         XCTAssertEqual(decimalA, decimalC)
         
         XCTAssertEqual(decimalA, decimalD)
+        
+        XCTAssertEqual(decimalA.description, "1.25000")
+        
+        XCTAssertEqual(decimalB.description, "1.25")
+        
+        XCTAssertEqual(decimalC.description, "1.25")
+        
+        XCTAssertEqual(decimalD.description, "1.2500000000")
     }
     
     // MARK: Comparable
     
     func test_comparable_lessThan_lhsLessThanRhs_returnsTrue() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "1.26"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "1.26", scale: 2)
         
         XCTAssertTrue(decimalA < decimalB)
     }
     
     func test_comparable_lessThan_lhsGreaterThanRhs_returnsFalse() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.26"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.26", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "1.25"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
         XCTAssertFalse(decimalA < decimalB)
     }
     
     func test_comparable_greaterThan_lhsLessThanRhs_returnsFalse() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "1.26"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "1.26", scale: 2)
         
         XCTAssertFalse(decimalA > decimalB)
     }
     
     func test_comparable_greaterThan_lhsGreaterThanRhs_returnsTrue() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.26"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.26", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "1.25"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
         XCTAssertTrue(decimalA > decimalB)
     }
@@ -133,109 +183,95 @@ final class RoundedDecimalTests: XCTestCase {
     
     func test_addition_addsCorrectly() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "7.76"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "7.76", scale: 2)
         
         let result = decimalA + decimalB
         
-        let expectedResult: RoundedDecimal<Places.two> = "9.01"
-        
-        XCTAssertEqual(result, expectedResult)
+        XCTAssertEqual(result.description, "9.01")
     }
     
     func test_subtraction_subtractsCorrectly() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "7.76"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "7.76", scale: 2)
         
         let result = decimalA - decimalB
-        
-        let expectedResult: RoundedDecimal<Places.two> = "-6.51"
-        
-        XCTAssertEqual(result, expectedResult)
+
+        XCTAssertEqual(result.description, "-6.51")
     }
     
     func test_division_dividesCorrectly() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "7.76"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "7.76", scale: 2)
         
         let result = decimalA / decimalB
         
-        let expectedResult: RoundedDecimal<Places.two> = "0.16"
-        
-        XCTAssertEqual(result, expectedResult)
+        XCTAssertEqual(result.description, "0.16")
     }
     
     func test_division_fromZero_dividesCorrectly_zero() {
         
-        let decimalA: RoundedDecimal<Places.two> = "0"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "0", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "7.76"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "7.76", scale: 2)
         
         let result = decimalA / decimalB
         
-        let expectedResult: RoundedDecimal<Places.two> = "0"
-        
-        XCTAssertEqual(result, expectedResult)
+        XCTAssertEqual(result.description, "0.00")
         
         XCTAssertFalse(result.isNaN)
     }
     
     func test_division_byZero_isNaN() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "0"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "0", scale: 2)
         
         let result = decimalA / decimalB
         
-        let expectedResult: RoundedDecimal<Places.two> = .nan()
-        
-        XCTAssertEqual(result, expectedResult)
+        XCTAssertEqual(result.description, "NaN")
         
         XCTAssertTrue(result.isNaN)
     }
     
     func test_multiplication_multipliesCorrectly() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "7.76"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "7.76", scale: 2)
         
         let result = decimalA * decimalB
         
-        let expectedResult: RoundedDecimal<Places.two> = "9.7"
-        
-        XCTAssertEqual(result, expectedResult)
+        XCTAssertEqual(result.description, "9.70")
     }
     
     func test_multiplication_byZero_multipliesCorrectly_zero() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
-        let decimalB: RoundedDecimal<Places.two> = "0"
+        let decimalB = DynamicRoundedDecimal(stringLiteral: "0", scale: 2)
         
         let result = decimalA * decimalB
-        
-        let expectedResult: RoundedDecimal<Places.two> = "0"
-        
-        XCTAssertEqual(result, expectedResult)
+
+        XCTAssertEqual(result.description, "0.00")
     }
     
     func test_precidence_bodmas1() {
         
-        let result: RoundedDecimal<Places.two> = 30 - 2 * 5
+        let result: DynamicRoundedDecimal = 30 - 2 * 5
         
         XCTAssertEqual(result, 20)
     }
     
     func test_precidence_bodmas2() {
         
-        let result: RoundedDecimal<Places.two> = 20 + 21 / 3 * 2
+        let result: DynamicRoundedDecimal = 20 + 21 / 3 * 2
         
         XCTAssertEqual(result, 34)
     }
@@ -244,7 +280,7 @@ final class RoundedDecimalTests: XCTestCase {
     
     func test_withInferredPrecision_smallerToLargerNumberOfPlaces_retainsAccuracyAndPrecision() {
         
-        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
         
         let decimalB: RoundedDecimal<Places.five> = decimalA.withInferredPrecision()
         
@@ -257,7 +293,7 @@ final class RoundedDecimalTests: XCTestCase {
     
     func test_withInferredPrecision_largerToSmallerNumberOfPlaces_losesPrecisionRatainsAccuracy() {
         
-        let decimalA: RoundedDecimal<Places.five> = "1.25900"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25900", scale: 5)
         
         let decimalB: RoundedDecimal<Places.two> = decimalA.withInferredPrecision()
         
@@ -272,7 +308,7 @@ final class RoundedDecimalTests: XCTestCase {
     
     func test_formatWith_formatsCorrectly() {
         
-        let decimalA: RoundedDecimal<Places.five> = "1.259456363"
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.259456363", scale: 5)
         
         let numberFormatter = NumberFormatter()
         
@@ -287,7 +323,7 @@ final class RoundedDecimalTests: XCTestCase {
     
     func test_isNaN_validNumber_returnsFalse() {
         
-        let result: RoundedDecimal<Places.two> = 10 / 2
+        let result: DynamicRoundedDecimal = 10 / 2
         
         XCTAssertEqual(result, 5)
         
@@ -296,114 +332,66 @@ final class RoundedDecimalTests: XCTestCase {
     
     func test_isNaN_invalidNumber_returnsTrue() {
         
-        let result: RoundedDecimal<Places.two> = 10 / 0
-        
-        XCTAssertEqual(result, .nan())
+        let result: DynamicRoundedDecimal = 10 / 0
         
         XCTAssertTrue(result.isNaN)
-    }
-    
-    // MARK: Codable
-    
-    func test_codable_toAndFromSameType_equates() {
-        
-        let roundedDecimal: RoundedDecimal<Places.five> = "1.97647802"
-        
-        guard let data = try? JSONEncoder().encode([roundedDecimal]) else { return XCTFail() }
-        
-        guard let decodedRoundedDecimalArray = try? JSONDecoder().decode([RoundedDecimal<Places.five>].self, from: data) else { return XCTFail() }
-        
-        XCTAssertEqual(decodedRoundedDecimalArray, ["1.97648"])
-    }
-    
-    func test_codable_toLesserDecimalType_usesLesserTypeForRounding() {
-        
-        let roundedDecimal: RoundedDecimal<Places.five> = "1.97647802"
-        
-        guard let data = try? JSONEncoder().encode([roundedDecimal]) else { return XCTFail() }
-        
-        guard let decodedRoundedDecimalArray = try? JSONDecoder().decode([RoundedDecimal<Places.two>].self, from: data) else { return XCTFail() }
-        
-        XCTAssertEqual(decodedRoundedDecimalArray, ["1.98"])
-    }
-    
-    func test_codable_toGreaterDecimalType_retainsAccuracy() {
-        
-        let roundedDecimal: RoundedDecimal<Places.two> = "1.97"
-        
-        guard let data = try? JSONEncoder().encode([roundedDecimal]) else { return XCTFail() }
-        
-        guard let decodedRoundedDecimalArray = try? JSONDecoder().decode([RoundedDecimal<Places.five>].self, from: data) else { return XCTFail() }
-        
-        XCTAssertEqual(decodedRoundedDecimalArray, ["1.97"])
-    }
-    
-    func test_encodable_representedAsRootLevelString() {
-        
-        let roundedDecimalArray: [RoundedDecimal<Places.two>] = ["1.97"]
-        
-        guard let data = try? JSONEncoder().encode(roundedDecimalArray) else { return XCTFail() }
-        
-        guard let json: [String] = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String] else { return XCTFail() }
-        
-        XCTAssertEqual(json.first, "1.97")
     }
     
     // MARK: CustomStringConvertible, CustomDebugStringConvertible
     
     func test_description_returnsCorrectValue() {
         
-        let roundedDecimal: RoundedDecimal<Places.five> = "1.97647802"
+        let roundedDecimal = DynamicRoundedDecimal(stringLiteral: "1.97647802", scale: 5)
         
         XCTAssertEqual(roundedDecimal.description, "1.97648")
     }
     
     func test_debugDescription_returnsCorrectValue() {
         
-        let roundedDecimal: RoundedDecimal<Places.five> = "1.97647802"
+        let roundedDecimal = DynamicRoundedDecimal(stringLiteral: "1.97647802", scale: 5)
         
         XCTAssertEqual(roundedDecimal.debugDescription, "1.97648")
     }
     
     func test_debugDescription_NaN_returnsCorrectValue() {
         
-        let roundedDecimal: RoundedDecimal<Places.five> = .nan()
+        let roundedDecimal = DynamicRoundedDecimal(stringLiteral: "u1", scale: 5)
         
         XCTAssertEqual(roundedDecimal.debugDescription, "NaN")
     }
     
     // MARK: Examples
     
-    func test_dealingWithMultiplePrecisions_decreasingPrecision() {
+    func test_dealingWithMultiplePrecisions_shouldKeepGreatestPrecision() {
         
-        let listedUSDPrice: RoundedDecimal<Places.two> = "2.59"
+        let listedUSDPrice = DynamicRoundedDecimal(stringLiteral: "2.59", scale: 2)
         
-        let exchangeRate: RoundedDecimal<Places.five> = "1.12345"
+        let exchangeRate = DynamicRoundedDecimal(stringLiteral: "1.12345", scale: 5)
         
-        let shortExchangeRate: RoundedDecimal<Places.two> = exchangeRate.withInferredPrecision()
+        let localPrice = listedUSDPrice * exchangeRate
         
-        let localPrice = listedUSDPrice * shortExchangeRate
-        
-        XCTAssertEqual(localPrice, "2.90")
+        XCTAssertEqual(localPrice.description, "2.90974")
     }
     
-    func test_dealingWithMultiplePrecisions_increasingPrecision() {
+    func test_dealingWithMultiplePrecisions_operationInverted_shouldKeepGreatestPrecision() {
+       
+        let listedUSDPrice = DynamicRoundedDecimal(stringLiteral: "2.59", scale: 2)
         
-        let listedUSDPrice: RoundedDecimal<Places.two> = "2.59"
+        let exchangeRate = DynamicRoundedDecimal(stringLiteral: "1.12345", scale: 5)
         
-        let exchangeRate: RoundedDecimal<Places.five> = "1.12345"
+        let localPrice = listedUSDPrice * exchangeRate
         
-        let longListedUSDPrice: RoundedDecimal<Places.five> = listedUSDPrice.withInferredPrecision()
-        
-        let localPrice = longListedUSDPrice * exchangeRate
-        
-        XCTAssertEqual(localPrice, "2.90974")
+        XCTAssertEqual(localPrice.description, "2.90974")
     }
     
     static var allTests = [
-        ("test_initWithString_validDecimalString_returnsRoundedDecimal", test_initWithString_validDecimalString_returnsRoundedDecimal),
+        ("test_initWithString_validDecimalString_returnsDynamicRoundedDecimal", test_initWithString_validDecimalString_returnsDynamicRoundedDecimal),
         ("test_initWithString_invalidDecimalString_returnsNil", test_initWithString_invalidDecimalString_returnsNil),
-        ("test_initWithIntegerLiteral_returnsRoundedDecimal", test_initWithIntegerLiteral_returnsRoundedDecimal),
+        ("test_initWithIntegerLiteral_returnsDynamicRoundedDecimal", test_initWithIntegerLiteral_returnsDynamicRoundedDecimal),
+        ("test_initWithRoundedDecimal_returnsDynamicRoundedDecimal", test_initWithRoundedDecimal_returnsDynamicRoundedDecimal),
+        ("test_initWithDynmicRoundedDecimal_returnsDynamicRoundedDecimal", test_initWithDynmicRoundedDecimal_returnsDynamicRoundedDecimal),
+        ("test_withScale_toLesserScale_returnsDynamicRoundedDecimalWithNewScale", test_withScale_toLesserScale_returnsDynamicRoundedDecimalWithNewScale),
+        ("test_withScale_toGreaterScale_returnsDynamicRoundedDecimalWithNewScale", test_withScale_toGreaterScale_returnsDynamicRoundedDecimalWithNewScale),
         ("test_equatable_isEqual_returnsTrue", test_equatable_isEqual_returnsTrue),
         ("test_equatable_isNotEqual_returnsFalse", test_equatable_isNotEqual_returnsFalse),
         ("test_equatable_roundsToSameValue_returnsTrue", test_equatable_roundsToSameValue_returnsTrue),
@@ -427,14 +415,10 @@ final class RoundedDecimalTests: XCTestCase {
         ("test_formatWith_formatsCorrectly", test_formatWith_formatsCorrectly),
         ("test_isNaN_validNumber_returnsFalse", test_isNaN_validNumber_returnsFalse),
         ("test_isNaN_invalidNumber_returnsTrue", test_isNaN_invalidNumber_returnsTrue),
-        ("test_codable_toAndFromSameType_equates", test_codable_toAndFromSameType_equates),
-        ("test_codable_toLesserDecimalType_usesLesserTypeForRounding", test_codable_toLesserDecimalType_usesLesserTypeForRounding),
-        ("test_codable_toGreaterDecimalType_retainsAccuracy", test_codable_toGreaterDecimalType_retainsAccuracy),
-        ("test_encodable_representedAsRootLevelString", test_encodable_representedAsRootLevelString),
         ("test_description_returnsCorrectValue", test_description_returnsCorrectValue),
         ("test_debugDescription_returnsCorrectValue", test_debugDescription_returnsCorrectValue),
         ("test_debugDescription_NaN_returnsCorrectValue", test_debugDescription_NaN_returnsCorrectValue),
-        ("test_dealingWithMultiplePrecisions_decreasingPrecision", test_dealingWithMultiplePrecisions_decreasingPrecision),
-        ("test_dealingWithMultiplePrecisions_increasingPrecision", test_dealingWithMultiplePrecisions_increasingPrecision),
+        ("test_dealingWithMultiplePrecisions_shouldKeepGreatestPrecision", test_dealingWithMultiplePrecisions_shouldKeepGreatestPrecision),
+        ("test_dealingWithMultiplePrecisions_operationInverted_shouldKeepGreatestPrecision", test_dealingWithMultiplePrecisions_operationInverted_shouldKeepGreatestPrecision),
     ]
 }
