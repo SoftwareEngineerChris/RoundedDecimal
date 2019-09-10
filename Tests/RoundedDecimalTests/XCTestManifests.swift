@@ -1,9 +1,9 @@
 //
-//  RoundedDecimal.swift
+//  XCTestManifests.swift
 //  RoundedDecimal
 //
-//  Created by Chris Hargreaves on 16/09/2018.
-//  Copyright © 2018 Software Engineering Limited. All rights reserved.
+//  Created by Chris Hargreaves on 09/09/2019.
+//  Copyright © 2019 Software Engineering Limited. All rights reserved.
 //
 
 import XCTest

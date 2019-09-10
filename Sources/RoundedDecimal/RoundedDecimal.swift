@@ -36,6 +36,11 @@ public struct RoundedDecimal<T: DecimalPlaces> {
         return RoundedDecimal<NewDecimalPlaces>(value: value)
     }
     
+    public func negated() -> RoundedDecimal {
+        
+        return RoundedDecimal(value: -value)
+    }
+    
     public func format(with numberFormatter: NumberFormatter) -> String {
         
         return numberFormatter.string(from: value as NSNumber)!
@@ -133,7 +138,7 @@ extension RoundedDecimal: CustomStringConvertible, CustomDebugStringConvertible 
     }
 }
 
-extension RoundedDecimal: Equatable, Comparable {
+extension RoundedDecimal: Equatable, Hashable, Comparable {
     
     public static func == (lhs: RoundedDecimal, rhs: RoundedDecimal) -> Bool {
         

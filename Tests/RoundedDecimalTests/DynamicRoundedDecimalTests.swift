@@ -2,8 +2,8 @@
 //  DynamicRoundedDecimalTests.swift
 //  RoundedDecimal
 //
-//  Created by Chris Hargreaves on 16/09/2018.
-//  Copyright © 2018 Software Engineering Limited. All rights reserved.
+//  Created by Chris Hargreaves on 09/09/2019.
+//  Copyright © 2019 Software Engineering Limited. All rights reserved.
 //
 
 import XCTest
@@ -302,6 +302,26 @@ final class DynamicRoundedDecimalTests: XCTestCase {
         XCTAssertEqual(decimalB, expectedDecimal)
         
         XCTAssertEqual(decimalB.description, "1.26")
+    }
+    
+    // MARK: negated()
+    
+    func test_negated_fromPositive_returnsNegativeValue() {
+        
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25900", scale: 5)
+        
+        let result = decimalA.negated()
+        
+        XCTAssertEqual(result.description, "-1.25900")
+    }
+    
+    func test_negated_fromNegative_returnsPositiveValue() {
+        
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "-1.25900", scale: 5)
+        
+        let result = decimalA.negated()
+        
+        XCTAssertEqual(result.description, "1.25900")
     }
     
     // MARK: format(with:)

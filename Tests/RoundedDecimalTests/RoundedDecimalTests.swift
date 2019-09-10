@@ -268,6 +268,26 @@ final class RoundedDecimalTests: XCTestCase {
         XCTAssertEqual(decimalB.description, "1.26")
     }
     
+    // MARK: negated()
+    
+    func test_negated_fromPositive_returnsNegativeValue() {
+        
+        let decimalA: RoundedDecimal<Places.five> = "1.25900"
+        
+        let result = decimalA.negated()
+        
+        XCTAssertEqual(result.description, "-1.25900")
+    }
+    
+    func test_negated_fromNegative_returnsPositiveValue() {
+        
+        let decimalA: RoundedDecimal<Places.five> = "-1.25900"
+        
+        let result = decimalA.negated()
+        
+        XCTAssertEqual(result.description, "1.25900")
+    }
+    
     // MARK: format(with:)
     
     func test_formatWith_formatsCorrectly() {

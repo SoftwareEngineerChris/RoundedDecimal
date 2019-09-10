@@ -3,7 +3,7 @@
 //  RoundedDecimal
 //
 //  Created by Chris Hargreaves on 09/09/2019.
-//  Copyright © 2018 Software Engineering Limited. All rights reserved.
+//  Copyright © 2019 Software Engineering Limited. All rights reserved.
 //
 
 import Foundation
@@ -56,6 +56,11 @@ public struct DynamicRoundedDecimal {
     public func withInferredPrecision<NewDecimalPlaces: DecimalPlaces>() -> RoundedDecimal<NewDecimalPlaces> {
         
         return RoundedDecimal<NewDecimalPlaces>(value: value)
+    }
+    
+    public func negated() -> DynamicRoundedDecimal {
+        
+        return DynamicRoundedDecimal(value: -value, scale: scale)
     }
     
     public func format(with numberFormatter: NumberFormatter) -> String {
@@ -115,7 +120,7 @@ extension DynamicRoundedDecimal: CustomStringConvertible, CustomDebugStringConve
     }
 }
 
-extension DynamicRoundedDecimal: Equatable, Comparable {
+extension DynamicRoundedDecimal: Equatable, Hashable, Comparable {
     
     public static func == (lhs: DynamicRoundedDecimal, rhs: DynamicRoundedDecimal) -> Bool {
         
