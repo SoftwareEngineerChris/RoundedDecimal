@@ -52,13 +52,13 @@ let appropriateLocalPrice = localPrice.with(scale: 0)
 
 ### Cocoapods
 ```ruby
-pod 'RoundedDecimal', '~> 2.1.0'
+pod 'RoundedDecimal', '~> 2.1.1'
 ```
 
 ### Swift Package Manager
 ```swift
 dependencies: [
-  .package(url: "https://github.com/SoftwareEngineerChris/RoundedDecimal.git", from: "2.1.0")
+  .package(url: "https://github.com/SoftwareEngineerChris/RoundedDecimal.git", from: "2.1.1")
 ]
 ```
 
