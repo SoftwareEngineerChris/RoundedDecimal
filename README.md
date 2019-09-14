@@ -5,10 +5,10 @@
 
 RoundedDecimal comes in two flavours; `RoundedDecimal<T: DecimalPlaces>` and `DynamicRoundedDecimal`. Different situations will require the use of one or the other.
 
-#### `RoundedDecimal<T: DecimalPlaces>`
+## `RoundedDecimal<T: DecimalPlaces>`
 Swift decimals where the number of decimal places is explicitly part of the type. e.g. `RoundedDecimal<Places.five>` can only operate with other `RoundedDecimal<Places.five>` values. This is guaranteed at compile-time, but requires the developer to know upfront what level of precision is needed.
 
-##### Example:
+### Example:
 
 ```swift
 // listedPrice == 2.59
@@ -29,10 +29,10 @@ let localPrice = listedPrice * exchangeRate
 
 These situations can be handled, but the developer must explicitly decide upon the resulting precision before the multiplication will be allowed. See the documentation for `RoundedDecimal` for more information.
 
-#### `DynamicRoundedDecimal`
+## `DynamicRoundedDecimal`
 This type is useful when the number of decimal places needed can't be known at compile-time. For example, when dealing with arbitrary currencies decided at run-time which have a varying number of decimal places. USD which has 2 decimal places, but JPY that 0 decimal places. `DynamicRoundedDecimal` is suitable in this scenario, as it the number of decimal places required is provided upon construction. 
 
-##### Example:
+### Example:
 
 ```swift
 // listedPrice == 2.59 after using a scale of 2 to represent USD
