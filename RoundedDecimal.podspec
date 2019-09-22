@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RoundedDecimal'
-  s.version          = '2.1.1'
+  s.version          = '2.2.0'
   s.summary          = 'Decimals where the number of decimal places is explicitly part of the type'
 
   s.description      = <<-DESC
