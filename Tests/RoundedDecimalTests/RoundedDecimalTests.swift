@@ -200,6 +200,28 @@ final class RoundedDecimalTests: XCTestCase {
         XCTAssertTrue(result.isNaN)
     }
     
+    func test_divisionWithDecimal_dividesCorrectly() {
+        
+        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        
+        let decimalB = Decimal(string: "7.76")!
+        
+        let result = decimalA / decimalB
+        
+        XCTAssertEqual(result.description, "0.16")
+    }
+    
+    func test_dividingADecimal_dividesCorrectly() {
+        
+        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        
+        let decimalB = Decimal(string: "7.76")!
+        
+        let result = decimalB / decimalA
+        
+        XCTAssertEqual(result.description, "6.21")
+    }
+    
     func test_multiplication_multipliesCorrectly() {
         
         let decimalA: RoundedDecimal<Places.two> = "1.25"
@@ -224,6 +246,23 @@ final class RoundedDecimalTests: XCTestCase {
         let expectedResult: RoundedDecimal<Places.two> = "0"
         
         XCTAssertEqual(result, expectedResult)
+    }
+    
+    func test_multiplicationWithDecimal_multipliesCorrectly() {
+        
+        let decimalA: RoundedDecimal<Places.two> = "1.25"
+        
+        let decimalB = Decimal(string: "7.76")!
+        
+        let result = decimalA * decimalB
+        
+        let resultReversed = decimalB * decimalA
+        
+        XCTAssertEqual(result.description, "9.70")
+        
+        XCTAssertEqual(resultReversed.description, "9.70")
+        
+        XCTAssertEqual(result, resultReversed)
     }
     
     func test_precidence_bodmas1() {
@@ -456,5 +495,8 @@ final class RoundedDecimalTests: XCTestCase {
         ("test_debugDescription_NaN_returnsCorrectValue", test_debugDescription_NaN_returnsCorrectValue),
         ("test_dealingWithMultiplePrecisions_decreasingPrecision", test_dealingWithMultiplePrecisions_decreasingPrecision),
         ("test_dealingWithMultiplePrecisions_increasingPrecision", test_dealingWithMultiplePrecisions_increasingPrecision),
+        ("test_divisionWithDecimal_dividesCorrectly", test_divisionWithDecimal_dividesCorrectly),
+        ("test_dividingADecimal_dividesCorrectly", test_dividingADecimal_dividesCorrectly),
+        ("test_multiplicationWithDecimal_multipliesCorrectly", test_multiplicationWithDecimal_multipliesCorrectly)
     ]
 }

@@ -73,9 +73,29 @@ public struct DynamicRoundedDecimal {
         return DynamicRoundedDecimal(value: lhs.value / rhs.value, scale: max(lhs.scale, rhs.scale))
     }
     
+    public static func / (numerator: DynamicRoundedDecimal, denominator: Decimal) -> DynamicRoundedDecimal {
+
+        return DynamicRoundedDecimal(value: numerator.value / denominator, scale: numerator.scale)
+    }
+    
+    public static func / (numerator: Decimal, denominator: DynamicRoundedDecimal) -> DynamicRoundedDecimal {
+
+        return DynamicRoundedDecimal(value: numerator / denominator.value, scale: denominator.scale)
+    }
+    
     public static func * (lhs: DynamicRoundedDecimal, rhs: DynamicRoundedDecimal) -> DynamicRoundedDecimal {
         
         return DynamicRoundedDecimal(value: lhs.value * rhs.value, scale: max(lhs.scale, rhs.scale))
+    }
+    
+    public static func * (roundedDecimal: DynamicRoundedDecimal, coefficient: Decimal) -> DynamicRoundedDecimal {
+
+        return DynamicRoundedDecimal(value: roundedDecimal.value * coefficient, scale: roundedDecimal.scale)
+    }
+    
+    public static func * (coefficient: Decimal, roundedDecimal: DynamicRoundedDecimal) -> DynamicRoundedDecimal {
+
+        return DynamicRoundedDecimal(value: roundedDecimal.value * coefficient, scale: roundedDecimal.scale)
     }
     
     public static func + (lhs: DynamicRoundedDecimal, rhs: DynamicRoundedDecimal) -> DynamicRoundedDecimal {

@@ -51,9 +51,29 @@ public struct RoundedDecimal<T: DecimalPlaces> {
         return RoundedDecimal(value: lhs.value / rhs.value)
     }
     
+    public static func / (numerator: RoundedDecimal, denominator: Decimal) -> RoundedDecimal {
+
+        return RoundedDecimal(value: numerator.value / denominator)
+    }
+    
+    public static func / (numerator: Decimal, denominator: RoundedDecimal) -> RoundedDecimal {
+
+        return RoundedDecimal(value: numerator / denominator.value)
+    }
+    
     public static func * (lhs: RoundedDecimal, rhs: RoundedDecimal) -> RoundedDecimal {
         
         return RoundedDecimal(value: lhs.value * rhs.value)
+    }
+    
+    public static func * (roundedDecimal: RoundedDecimal, coefficient: Decimal) -> RoundedDecimal {
+
+        return RoundedDecimal(value: roundedDecimal.value * coefficient)
+    }
+    
+    public static func * (coefficient: Decimal, roundedDecimal: RoundedDecimal) -> RoundedDecimal {
+
+        return RoundedDecimal(value: roundedDecimal.value * coefficient)
     }
     
     public static func + (lhs: RoundedDecimal, rhs: RoundedDecimal) -> RoundedDecimal {

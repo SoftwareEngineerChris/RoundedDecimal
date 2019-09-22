@@ -240,6 +240,28 @@ final class DynamicRoundedDecimalTests: XCTestCase {
         XCTAssertTrue(result.isNaN)
     }
     
+    func test_divisionWithDecimal_dividesCorrectly() {
+        
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
+        
+        let decimalB = Decimal(string: "7.76")!
+        
+        let result = decimalA / decimalB
+        
+        XCTAssertEqual(result.description, "0.16")
+    }
+    
+    func test_dividingADecimal_dividesCorrectly() {
+        
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
+        
+        let decimalB = Decimal(string: "7.76")!
+        
+        let result = decimalB / decimalA
+        
+        XCTAssertEqual(result.description, "6.21")
+    }
+    
     func test_multiplication_multipliesCorrectly() {
         
         let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
@@ -260,6 +282,23 @@ final class DynamicRoundedDecimalTests: XCTestCase {
         let result = decimalA * decimalB
 
         XCTAssertEqual(result.description, "0.00")
+    }
+    
+    func test_multiplicationWithDecimal_multipliesCorrectly() {
+        
+        let decimalA = DynamicRoundedDecimal(stringLiteral: "1.25", scale: 2)
+        
+        let decimalB = Decimal(string: "7.76")!
+        
+        let result = decimalA * decimalB
+        
+        let resultReversed = decimalB * decimalA
+        
+        XCTAssertEqual(result.description, "9.70")
+        
+        XCTAssertEqual(resultReversed.description, "9.70")
+        
+        XCTAssertEqual(result, resultReversed)
     }
     
     func test_precidence_bodmas1() {
@@ -440,5 +479,8 @@ final class DynamicRoundedDecimalTests: XCTestCase {
         ("test_debugDescription_NaN_returnsCorrectValue", test_debugDescription_NaN_returnsCorrectValue),
         ("test_dealingWithMultiplePrecisions_shouldKeepGreatestPrecision", test_dealingWithMultiplePrecisions_shouldKeepGreatestPrecision),
         ("test_dealingWithMultiplePrecisions_operationInverted_shouldKeepGreatestPrecision", test_dealingWithMultiplePrecisions_operationInverted_shouldKeepGreatestPrecision),
+        ("test_divisionWithDecimal_dividesCorrectly", test_divisionWithDecimal_dividesCorrectly),
+        ("test_dividingADecimal_dividesCorrectly", test_dividingADecimal_dividesCorrectly),
+        ("test_multiplicationWithDecimal_multipliesCorrectly", test_multiplicationWithDecimal_multipliesCorrectly)
     ]
 }
