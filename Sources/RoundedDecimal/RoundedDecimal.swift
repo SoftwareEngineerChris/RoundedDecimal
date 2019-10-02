@@ -14,7 +14,7 @@ public struct RoundedDecimal<T: DecimalPlaces> {
     
     let value: Decimal
     
-    init(value: Decimal) {
+    public init(value: Decimal) {
         
         let decimalHandler = NSDecimalNumberHandler(roundingMode: .bankers,
                                                     scale: T.count,
