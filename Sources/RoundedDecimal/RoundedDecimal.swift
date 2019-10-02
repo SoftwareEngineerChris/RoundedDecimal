@@ -46,6 +46,11 @@ public struct RoundedDecimal<T: DecimalPlaces> {
         return numberFormatter.string(from: value as NSNumber)!
     }
     
+    public func toDynanamic() -> DynamicRoundedDecimal {
+        
+        return DynamicRoundedDecimal(roundedDecimal: self, scale: T.count)
+    }
+    
     public static func / (lhs: RoundedDecimal, rhs: RoundedDecimal) -> RoundedDecimal {
         
         return RoundedDecimal(value: lhs.value / rhs.value)

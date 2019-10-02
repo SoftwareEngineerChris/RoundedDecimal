@@ -342,6 +342,19 @@ final class RoundedDecimalTests: XCTestCase {
         XCTAssertEqual(result, "one point two five nine four six")
     }
     
+    // MARK: toDynamic()
+    
+    func test_toDynamic_returnsDynamicRoundedDecimal() {
+        
+        let decimalA: RoundedDecimal<Places.five> = "1.259456363"
+        
+        let dynamicRoundedDecimal = decimalA.toDynanamic()
+        
+        let expectedResult = DynamicRoundedDecimal(stringLiteral: "1.25946", scale: 5)
+        
+        XCTAssertEqual(dynamicRoundedDecimal, expectedResult)
+    }
+    
     // MARK: isNaN
     
     func test_isNaN_validNumber_returnsFalse() {
