@@ -64,15 +64,17 @@ When dealing with decimals we often want to know; deal with; or maintain a numbe
 
 For example, when dealing with money in a shopping application that serves the UK and US, we want to deal with numbers that have 2 decimal places. Especially when dealing with lots of these numbers and converting between USD and GBP.
 
-If we have a product that costs _$2.50_ to sell in the United States, and we wanted to sell it in the United Kingdom, we may want to use an exchange rate to calculate the local price. If the rate provided by our API is _0.81245 USD per GBP_ (or *_1.23084 GBP per USD_), using a simple multiplication, we may calculate the price for the item to be _£3.0771_.
+If we have a product that costs _£2.50_ to sell in the United Kingdom, and we wanted to sell it in the United States, we may want to use an exchange rate to calculate the local price. If the rate provided by our API is _0.81245 GBP per USD_ (or *_1.23084 USD per GBP_), using a simple multiplication, we may calculate the price for the item to be _$3.0771_ in the United States.
 
-We probably don't want to present _£3.0771_ to our user as they don't normally deal in fractions of pennies. In our presentation layer we may format the value in the receipt as _£3.08_. The user has decided to order _300_ of these items. The calculation part of our application doesn't necessarily know how the data is being presented, so deals with the item price of _£3.0771_. Therefore, _£3.0771_ multiplied by _300_ is _£923.13_.
+We probably don't want to present _$3.0771_ to our user as they don't normally deal in fractions of pennies. In our presentation layer we _may_ format the value in the receipt as _$3.08_. 
+
+The user has decided to order _300_ of these items. The calculation in our application doesn't necessarily know how the data is being presented, so deals with the item price of _$3.0771_. Therefore, _$3.0771_ multiplied by _300_ is _$923.13_.
 
 In this case we may present a receipt to the user which looks like: `Special Product @ £3.08 x 300 = £923.13`
 
-Except _300_ multiplied by _£3.08_ isn't _£923.13_. It's _£924.00_. The user is confused about the total presented to them, not realising that the calculation used a price of £3.0771 per item rather than the £3.08 presented.
+Except _300_ multiplied by _$3.08_ isn't _$923.13_. It's _$924.00_. The user is confused about the total presented to them, not realising that the calculation used a price of $3.0771 per item rather than the $3.08 presented.
 
 What they should have seen on their receipt is either:
-`Special Product @ £3.08 x 300 = £924.00` or  `Special Product @ £3.0771 x 300 = £923.13`
+`Special Product @ $3.08 x 300 = $924.00` or  `Special Product @ $3.0771 x 300 = $923.13`
 
 How this is handled should be a business decision, but we should be able to guarantee the result of that decision in our code. We can make this a compile-time requirement using `RoundedDecimal` if the currencies used, or at least required decimal lengths, are static and known at compile-time. Or we can use `DynamicRoundedDecimal` to handle this if we're dealing with currencies, or decimal lengths, chosen at run-time. See each type's documentation for how this can be handled.
